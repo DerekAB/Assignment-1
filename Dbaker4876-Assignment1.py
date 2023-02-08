@@ -17,7 +17,7 @@ quantity = ""
 totalPrice = ""
 disPrice = ""
 tax = ""
-grandTotal = ''
+grandTotal = 1.5
 
 def formatBill(data, headers, size) :
     lines = ""
@@ -53,7 +53,7 @@ def getDinnerOrder():
         dinner = din2
         price = 10
         
-    quantity = int(input("How many would you like?: "))  
+    quantity = float(input("How many would you like?: "))  
       
     totalPrice = price * quantity
     tax = totalPrice * 0.13
@@ -67,6 +67,7 @@ def getDinnerOrder():
     
     savings = totalPrice - (totalPrice + disPrice) 
     grandTotal = totalPrice - disPrice
+    
     print('                           ')
     print(dinner + " * " + str(quantity))
     print('                             ')
@@ -76,7 +77,7 @@ def getDinnerOrder():
     print("Discount " + str(savings))
     print("Grand total " + str(grandTotal))
     
-    confirm = input("Is this what you want?: ")
+    confirm = input("Is this what you want? [Y/N]: ")
     if confirm == "n":
         return True
     if confirm == "y":
@@ -118,5 +119,9 @@ headers = ["Order", "Item Amount", "Item Price", "Total"]
 
 student = input("Are you a student? [Y/N]: ").strip().lower()
 if student == "y":
-    data = [dinner, str(quantity), '$' + str(price), '$' + str(grandTotal)], ['10% Student Savings', '', '', ]
-    print(formatBill(headers, data))
+    print(firstName + ' ' + lastName)
+    print(streetNumber + ' ' + streetName + ' ' + ' ' + apartmentNum)
+    print(city + ', ' + province + ', ' + postalCode)
+    print(specInstructions)
+    data = [dinner, str(quantity), '$' + str(price), '$' + str(grandTotal)], ['10% Student Savings', '', '', str(studentDif)], ['', '', 'Sub Total', str(studentDiscount)]
+    print(formatBill(headers, data, 15))
